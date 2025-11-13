@@ -1,7 +1,9 @@
 const express = require('express')
            const bodyParser = require('body-parser')
 const path = require('path')
-const stripe = require('stripe')('process.env.STRIPE_SECRET_KEY)') // change the secret key
+require('dotenv').config();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);// change the secret key
+console.log('Stripe key loaded:', process.env.STRIPE_SECRET_KEY ? '✅ Yes' : '❌ No');
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
